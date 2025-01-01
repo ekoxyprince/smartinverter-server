@@ -5,7 +5,7 @@ const socket = {
   init: (httpServer) => {
     io = new Server(httpServer, {
       cors: {
-        origin: "http://localhost:5173",
+        origin: "https://smartinverter-client.vercel.app",
         creditials: true,
       },
     });
