@@ -23,7 +23,7 @@ exports.getAnalysisData = catchAsync(async (req, res) => {
   const temperatures = analysis
     .map((a) => {
       return {
-        name: new Date(a.createdAt).toLocaleTimeString(),
+        name: new Date(a.createdAt).toUTCString(),
         temp: a.inverterTemp,
       };
     })
@@ -31,14 +31,14 @@ exports.getAnalysisData = catchAsync(async (req, res) => {
   const batterySoc = analysis
     .map((a) => {
       return {
-        name: new Date(a.createdAt).toLocaleTimeString(),
+        name: new Date(a.createdAt).toUTCString(),
         soc: a.batterySoc,
       };
     })
     .reverse();
   const load = analysis
     .map((a) => {
-      return { name: new Date(a.createdAt).toLocaleTimeString(), load: a.load };
+      return { name: new Date(a.createdAt).toUTCString(), load: a.load };
     })
     .reverse();
   res.status(200).json({
@@ -82,7 +82,7 @@ exports.postAnalysisData = catchAsync(async (req, res) => {
   const temperatures = analysis
     .map((a) => {
       return {
-        name: new Date(a.createdAt).toLocaleTimeString(),
+        name: new Date(a.createdAt).toUTCString(),
         temp: a.inverterTemp,
       };
     })
@@ -90,14 +90,14 @@ exports.postAnalysisData = catchAsync(async (req, res) => {
   const batterySoc = analysis
     .map((a) => {
       return {
-        name: new Date(a.createdAt).toLocaleTimeString(),
+        name: new Date(a.createdAt).toUTCString(),
         soc: a.batterySoc,
       };
     })
     .reverse();
   const load = analysis
     .map((a) => {
-      return { name: new Date(a.createdAt).toLocaleTimeString(), load: a.load };
+      return { name: new Date(a.createdAt).toUTCString(), load: a.load };
     })
     .reverse();
   const data = { temperatures, batterySoc, load };
